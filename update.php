@@ -16,12 +16,12 @@ print_r($_POST);
 //CREAMOS UN OBJETO DE LA CASE DATA
 
 $db = new Data();
-$respuesta = $db->create($empleado);
+$respuesta = $db->update($empleado);
 if($respuesta){
-$mensaje="Empleado resgistrado correctamente";
+$mensaje="Empleado Actualizado correctamente";
 $class="alert alert-success";
 }else{
-$mensaje="Empleado ya existe";
+$mensaje="Empleado no existe";
 $class="alert alert-danger";	
 }
 //verificar
@@ -69,7 +69,7 @@ $empleado = $empleado->find($_GET['id']);
 					<div class="col-md-6">
 						<label for="name">Nombre Completo * </label>
 						<input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control" required value="<?php echo $empleado->getNombre_empleado(); ?>" />
-						<input type="hiiden" name="id" value="<?php echo $empleado->getId(); ?>" />
+						<input type="hidden" name="id" value="<?php echo $empleado->getId(); ?>" />
 					</div>
 					
 				    <div class="col-md-12">
@@ -79,7 +79,7 @@ $empleado = $empleado->find($_GET['id']);
 
 					<div class="col-md-12">
 						<label for="name">Sexo * </label>
-						<input type="text" name="text" id="text" class="form-control" required value="<?php echo $empleado->getSexo(); ?>" />
+						<input type="text" name="sexo" id="sexo" class="form-control" required value="<?php echo $empleado->getSexo(); ?>" />
 					</div>
 
 

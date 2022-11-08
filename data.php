@@ -109,6 +109,7 @@ public function find($id):Empleado
 }
 //metodo update
 public function update(Empleado $objEmpleado){
+	 
 	$id=$this->connect()->real_escape_string($objEmpleado->getId());
 	$nombre_empleado=$this->connect()->real_escape_string($objEmpleado->getNombre_empleado()); 
 	$email=$this->connect()->real_escape_string($objEmpleado->getEmail()); 
@@ -121,7 +122,7 @@ public function update(Empleado $objEmpleado){
     $sql = "select * from empleado where id='$id';";
 
 
-	$sql="INSERT INTO empleado Values(DEFAULT,'$nombre_empleado','$email','$sexo','$area_id','$descripcion');";
+	$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id',descripcion='$descripcion' where id=$id;";
 	
 	$res = $this->connect()->query($sql);
 	if($res){
