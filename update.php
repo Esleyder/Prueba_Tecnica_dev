@@ -11,6 +11,7 @@ $empleado->setEmail($_POST['email']);
 $empleado->setSexo($_POST['sexo']);
 $empleado->setArea_id($_POST['area_id']);
 $empleado->setDescripcion($_POST['descripcion']);
+
 print_r($_POST);
 
 //CREAMOS UN OBJETO DE LA CASE DATA

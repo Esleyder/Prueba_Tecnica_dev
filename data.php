@@ -109,30 +109,31 @@ public function find($id):Empleado
 }
 //metodo update
 public function update(Empleado $objEmpleado){
-	 
+	  
 	$id=$this->connect()->real_escape_string($objEmpleado->getId());
 	$nombre_empleado=$this->connect()->real_escape_string($objEmpleado->getNombre_empleado()); 
 	$email=$this->connect()->real_escape_string($objEmpleado->getEmail()); 
 	$sexo=$this->connect()->real_escape_string($objEmpleado->getSexo()); 
 	$area_id=$this->connect()->real_escape_string($objEmpleado->getArea_id()); 
 	$descripcion=$this->connect()->real_escape_string($objEmpleado->getDescripcion()); 
-	
-
-	//verificar si existe
+	 
+ 
+	//verificar si existe por id
     $sql = "select * from empleado where id='$id';";
-
-
-	$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id',descripcion='$descripcion' where id=$id;";
-	
-	$res = $this->connect()->query($sql);
+    $res = $this->connect()->query($sql);
+	if($res->num_rows == 0){
+    return false;
+	} else{
+    //$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id',descripcion='$descripcion' where id=$id;";
+    $sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email' where id=$id;";
+    $res = $this->connect()->query($sql);
 	if($res){
-	return true;
-	}else{
-		return false;
+		return true;
+		}else{
+			return false;
+		}
+			
+		}
 	}
-		
-	}
-
-
 }
 ?>
