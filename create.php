@@ -60,12 +60,12 @@ $class="alert alert-danger";
 				<form action="" method="POST">
 					<div class="col-md-6">
 						<label for="name">Nombre Completo * </label>
-						<input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control" required>
+						<input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control" required/>
 					</div>
 					
 				    <div class="col-md-12">
 						<label for="name">Correo Elecronico * </label>
-						<input type="email" name="email" id="email" class="form-control" required>
+						<input type="email" name="email" id="email" class="form-control" required/>
 					</div>
 					
 					
@@ -73,10 +73,10 @@ $class="alert alert-danger";
 					   <label for="name">Sexo * </label>
 						<br>
 					   <label for="louie">Mujer</label>
-                       <input type="radio" id="sexo" name="sexo" value="F" required>
+                       <input type="radio" id="sexo" name="sexo" value="F" required/>
 					   <br>
                        <label for="louie">Hombre</label>
-				       <input type="radio" id="sexo" name="sexo" value="M" required> 
+				       <input type="radio" id="sexo" name="sexo" value="M" required/> 
 					</div>
 					
 					
@@ -97,7 +97,7 @@ $class="alert alert-danger";
 					
 					<div class="col-md-12">
 						<h6>Descripcion *</h6>
-						<textarea name="descripcion" rows="7" cols="20">Descripcion de la experiencia del empleado</textarea>
+						<textarea name="descripcion" id="descripcion"  rows="7" cols="20">Descripcion de la experiencia del empleado</textarea>
 					</div>
 					
 					

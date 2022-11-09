@@ -116,7 +116,7 @@ $empleado = $empleado->find($_GET['id']);
 					
 					<div class="col-md-12">
 						<h6>Descripcion *</h6>
-						<textarea name="descripcion"  rows="7" cols="20"><?php echo $empleado->getDescripcion(); ?></textarea>
+						<textarea  id="descripcion" name="descripcion"  rows="7" cols="20"><?php echo $empleado->getDescripcion(); ?></textarea>
 					</div>
 					
 					 
