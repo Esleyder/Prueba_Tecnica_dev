@@ -102,7 +102,7 @@ $empleado = $empleado->find($_GET['id']);
 					<div class="col-md-12">
 					       <h6>Areas *</h6>
 						<select name="area_id" id="area_id" >
-                              <option value="area_id"  ><?php echo $empleado->getArea_id(); ?></option>
+                              <option value="<?php echo $empleado->getArea_id(); ?>"><?php echo $empleado->getArea_id(); ?></option>
                              <?php
                                 $query = $mysqli -> query ("SELECT * FROM areas");
                                     while ($valores = mysqli_fetch_array($query)) {
