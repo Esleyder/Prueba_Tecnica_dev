@@ -125,7 +125,9 @@ public function update(Empleado $objEmpleado){
     return false;
 	} else{
     //$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id',descripcion='$descripcion' where id=$id;";
-    $sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email' where id=$id;";
+    //$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id',descripcion='$descripcion' where id=$id;";
+	//$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id' where id=$id;";
+	$sql="UPDATE empleado SET nombre_empleado='$nombre_empleado',email='$email',sexo='$sexo',area_id='$area_id' where id=$id;";
     $res = $this->connect()->query($sql);
 	if($res){
 		return true;
