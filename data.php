@@ -102,8 +102,6 @@ public function find($id):Empleado
        $e->setArea_id($datos->area_id);
 	   $e->setDescripcion($datos->descripcion);
 
-
-
 	}
 	return $e;
 }

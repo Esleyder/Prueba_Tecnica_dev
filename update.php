@@ -51,7 +51,7 @@ $empleado = $empleado->find($_GET['id']);
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		  <title>Nuevo Empleado</title>
+		  <title>Editar Empleado</title>
      </head>
 	 
 	 <body>  
@@ -78,26 +78,31 @@ $empleado = $empleado->find($_GET['id']);
 						<input type="email" name="email" id="email" class="form-control" required value="<?php echo $empleado->getEmail(); ?>" />
 					</div>
 
-					<div class="col-md-12">
+					 
+				
+
+
+					<?php
+					/*
+					ver el valor seleccionado de sexo en radio
+                    <div class="col-md-12">
 						<label for="name">Sexo * </label>
 						<input type="text" name="sexo" id="sexo" class="form-control" required value="<?php echo $empleado->getSexo(); ?>" />
 					</div>
-
-
+					*/
+					?>
 					
-					<?php
-					/*
 					<div class="col-md-12">
 					   <label for="name">Sexo * </label>
 						<br>
 					   <label for="louie">Mujer</label>
-                       <input type="radio" id="sexo" name="sexo" value="M"   required value="<?php echo $empleado->getSexo(); ?>" />
+                       <input type="radio" id="sexo" name="sexo" value="F" <?php if($empleado->getSexo()=="F") echo "checked" ?>>
 					   <br>
                        <label for="louie">Hombre</label>
-				       <input type="radio" id="sexo" name="sexo" value="F"  required value="<?php echo $empleado->getSexo(); ?>" /> 
+					   <input type="radio" id="sexo" name="sexo" value="M" <?php if($empleado->getSexo()=="M") echo "checked" ?>>
 					</div>
-					*/
-                    ?>					
+					
+                    					
 					
 					<div class="col-md-12">
 					       <h6>Areas *</h6>
