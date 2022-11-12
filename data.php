@@ -1,5 +1,7 @@
 <?php
+//requiero la clase Empleado
 require 'Empleado.php';
+//Clase data para la conexion a la base de datos
 class Data{
 	  //atributos privados;
       private $con;
@@ -8,7 +10,7 @@ class Data{
       private $pass;
       private $base;
 	  private $port;
-	//Constructor
+	//Constructor que inicializa los atrubutos
 public function __construct()
 {
 	$this->host ="localhost";
@@ -21,23 +23,25 @@ public function __construct()
 public function connect(){
 $this->con = new mysqli($this->host,$this->user,$this->pass,$this->base,$this->port);
 if($this->con->connect_error){
-die("No se logro la conexion : ".$this->con->connect_error);	
+die("Error No se logro la conexion : ".$this->con->connect_error);	
 }else{
 	return $this->con;
 }
 }
-
-
 //Crear un Objeto (Funcion)
 public function create(Empleado $objEmpleado){
+//Recibir el id auto-increment para añadirlo a la segunda insercion sql para insertar en empleado_rol
+$id=$this->connect()->real_escape_string($objEmpleado->getId()); 	
 $nombre_empleado=$this->connect()->real_escape_string($objEmpleado->getNombre_empleado()); 
 $email=$this->connect()->real_escape_string($objEmpleado->getEmail()); 
 $sexo=$this->connect()->real_escape_string($objEmpleado->getSexo()); 
 $area_id=$this->connect()->real_escape_string($objEmpleado->getArea_id()); 
-$descripcion=$this->connect()->real_escape_string($objEmpleado->getDescripcion()); 
+$descripcion=$this->connect()->real_escape_string($objEmpleado->getDescripcion());
+
 
 //sql para insertar un empleado en la base de datos mysql con los atributos de la tabla empleado
-$sql="INSERT INTO empleado Values(DEFAULT,'$nombre_empleado','$email','$sexo','$area_id','$descripcion');";
+$sql="INSERT INTO empleado Values('$id','$nombre_empleado','$email','$sexo','$area_id','$descripcion');";
+//$sql1="INSERT INTO empleado_rol values(Default,'$rol_id');";
 $res = $this->connect()->query($sql);
 
 if($res){
@@ -49,11 +53,9 @@ return true;
 }
 //listar empleados
 public function list(){	
-    //creo un arreglo
+    //creo un arreglo para almacenarlo en $datos
 	$datos=array();
-
 	//$sql = "Select * from empleado;";
-
     $sql = "select empleado.id,empleado.nombre_empleado,empleado.email,empleado.sexo, areas.nombre,empleado.descripcion 
     from empleado, areas
     where empleado.area_id=areas.id;;";
@@ -70,7 +72,7 @@ public function list(){
 	return $datos;
 	}
 }
-//Eliminar
+//Eliminar registros
 public function delete($id){	
 	$id=$this->connect()->real_escape_string($id);
 	$sql = "delete from empleado where id=$id;";
@@ -82,7 +84,7 @@ public function delete($id){
 		return false;
 	}
 }
-//Find
+//Find-Buscar
 public function find($id):Empleado
 {
 	$e=new Empleado();
@@ -135,5 +137,29 @@ public function update(Empleado $objEmpleado){
 			
 		}
 	}
+	//crear una funcion para guardar la informacion en una segunda tabla llamada empleado_rol
+    public function create2(Empleado $objEmpleado){
+       	//Recibir el id auto-increment para añadirlo a la segunda insercion sql para insertar en empleado_rol
+		$id=$this->connect()->real_escape_string($objEmpleado->getId()); 	
+		$nombre_empleado=$this->connect()->real_escape_string($objEmpleado->getNombre_empleado()); 
+		$email=$this->connect()->real_escape_string($objEmpleado->getEmail()); 
+		$sexo=$this->connect()->real_escape_string($objEmpleado->getSexo()); 
+		$area_id=$this->connect()->real_escape_string($objEmpleado->getArea_id()); 
+		$descripcion=$this->connect()->real_escape_string($objEmpleado->getDescripcion());
+		
+		
+		//sql para insertar un empleado en la base de datos mysql con los atributos de la tabla empleado
+		$sql="INSERT INTO empleado Values('$id','$nombre_empleado','$email','$sexo','$area_id','$descripcion');";
+		//$sql1="INSERT INTO empleado_rol values(Default,'$rol_id');";
+		$res = $this->connect()->query($sql);
+		
+		if($res){
+		return true;
+		}else{
+			return false;
+		}
+			
+		}
+
 }
 ?>

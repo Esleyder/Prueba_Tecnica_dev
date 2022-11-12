@@ -95,11 +95,13 @@ $empleado = $empleado->find($_GET['id']);
 					<div class="col-md-12">
 					   <label for="name">Sexo * </label>
 						<br>
-					   <label for="louie">Mujer</label>
-                       <input type="radio" id="sexo" name="sexo" value="F" <?php if($empleado->getSexo()=="F") echo "checked" ?>>
+						<label for="louie">Masculino</label>
+					   <input type="radio" id="sexo" name="sexo" value="Masculino" <?php if($empleado->getSexo()=="Masculino") echo "checked" ?>>
+	                   <br>
+					   <label for="louie">Femenino</label>
+                       <input type="radio" id="sexo" name="sexo" value="Femenino" <?php if($empleado->getSexo()=="Femenino") echo "checked" ?>>
 					   <br>
-                       <label for="louie">Hombre</label>
-					   <input type="radio" id="sexo" name="sexo" value="M" <?php if($empleado->getSexo()=="M") echo "checked" ?>>
+                       
 					</div>
 					
                     					

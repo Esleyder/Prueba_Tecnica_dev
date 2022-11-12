@@ -5,6 +5,7 @@ if(isset($_POST['guardar'])){
 require 'data.php';
 
 $empleado =new Empleado();
+$empleado->setId($_POST['id']);
 $empleado->setNombre_empleado($_POST['nombre_empleado']);
 $empleado->setEmail($_POST['email']);
 $empleado->setSexo($_POST['sexo']);
@@ -60,23 +61,26 @@ $class="alert alert-danger";
 				<form action="" method="POST">
 					<div class="col-md-6">
 						<label for="name">Nombre Completo * </label>
-						<input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control" required/>
+						<input type="text" name="nombre_empleado" id="nombre_empleado" class="form-control" required placeholder="Nombre Completo del empleado"/>
+						<input type="hidden" name="id" id="id"  />
 					</div>
 					
 				    <div class="col-md-12">
 						<label for="name">Correo Elecronico * </label>
-						<input type="email" name="email" id="email" class="form-control" required/>
+						<input type="email" name="email" id="email" class="form-control" placeholder="Correo Electronico" required/>
 					</div>
 					
 					
 					<div class="col-md-12">
 					   <label for="name">Sexo * </label>
 						<br>
-					   <label for="louie">Mujer</label>
-                       <input type="radio" id="sexo" name="sexo" value="F" required/>
+					    <label for="louie">Masculino</label>
+				       <input type="radio" id="sexo" name="sexo" value="Masculino" required/>
+					   <br> 
+					   <label for="louie">Femenino</label>
+                       <input type="radio" id="sexo" name="sexo" value="Femenino" required/>
 					   <br>
-                       <label for="louie">Hombre</label>
-				       <input type="radio" id="sexo" name="sexo" value="M" required/> 
+
 					</div>
 					
 					
@@ -97,7 +101,7 @@ $class="alert alert-danger";
 					
 					<div class="col-md-12">
 						<h6>Descripcion *</h6>
-						<textarea name="descripcion" id="descripcion"  rows="7" cols="20">Descripcion de la experiencia del empleado</textarea>
+						<textarea name="descripcion" id="descripcion"  rows="7" cols="20" placeholder="Descripcion de la experiencia del empleado"></textarea>
 					</div>
 					
 					

@@ -27,7 +27,7 @@ $class="alert alert-danger";
 ?>
 
 <?php
-// Realizamos la conexión con el servidor 
+// Realizamos la conexion con la base de datos
   $mysqli = new mysqli("localhost", "root", "", "prueba_tecnica_dev");
 ?>
 <html>
@@ -78,7 +78,7 @@ $class="alert alert-danger";
 							<th>Nombre</th>
 							<th>Email</th>
 							<th>Sexo</th>
-							<th>Areas</th>
+							<th>Area</th>
 							<th>Descripcion</th>
 							<th>Modificar</th>
 							<th>Eliminar</th>
